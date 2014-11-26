@@ -8,7 +8,7 @@ class WopiFilesController < ApplicationController
         :BaseFileName => attachment.filename,
         :OwnerId => attachment.author_id,
         :Size => attachment.filesize,
-        :Version => 1,
+        :Version => Time.now.to_i,
         :DownloadUrl => request.protocol + request.host_with_port + '/wopi/files/' + attachment.id.to_s + '/contents'
     }.to_json
   end
