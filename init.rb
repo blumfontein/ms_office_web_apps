@@ -12,4 +12,5 @@ require_dependency 'application_helper'
 
 Rails.configuration.to_prepare do
   ApplicationHelper.send :include, ApplicationHelperPatch
+  AttachmentsController.send :include, AttachmentsControllerPatch
 end

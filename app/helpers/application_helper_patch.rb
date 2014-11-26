@@ -4,6 +4,7 @@ module ApplicationHelperPatch
       text = options.delete(:text) || attachment.filename
       route_method = options.delete(:download) ? :download_named_attachment_path : :named_attachment_path
       html_options = options.slice!(:only_path)
+      html_options[:target] = '_blank'
 
       extension = attachment.filename.split('.').last
 
@@ -22,7 +23,6 @@ module ApplicationHelperPatch
         require 'open-uri'
         host = request.nil? ? '' : request.protocol + request.host_with_port
         url = web_apps_url + URI::encode(host + '/wopi/files/' + attachment.id.to_s)
-        html_options[:target] = '_blank'
       else
         url = send(route_method, attachment, attachment.filename, options)
       end
