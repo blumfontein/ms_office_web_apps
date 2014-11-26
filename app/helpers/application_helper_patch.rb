@@ -28,7 +28,7 @@ module ApplicationHelperPatch
       end
 
       download_url = send('wopi_get_file_path', attachment)
-      link_to(text, url, html_options) + ' ' + link_to(image_tag('download.png', :plugin => 'ms_office_web_apps'), download_url)
+      link_to(text, url, html_options) + ' ' + link_to(image_tag('download.png', :plugin => 'ms_office_web_apps'), download_url, {:title => t(:button_download)})
     end
   end
 
